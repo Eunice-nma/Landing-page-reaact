@@ -4,10 +4,15 @@ import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles({
     footer: {
-     backgroundColor: "white",
+     backgroundColor: "#F7F7F7",
      textAlign: "center",
-     height: "10vh",
-     padding: "15px"
+     height: "12vh",
+     color: "grey",
+     maxWidth: "100vw",
+     display: "flex",
+     flexDirection: "column",
+     justifyContent: "center",
+     marginTop: "auto",
     },
 })
 
@@ -18,7 +23,7 @@ function Footer(props) {
             <Typography variant="h4">
                 LOREM
             </Typography>
-            <Typography>
+            <Typography variant = "body2">
                 Lorem ipsum, dolor sit
             </Typography>
         </div>

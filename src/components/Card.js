@@ -16,7 +16,10 @@ const useStyles = makeStyles((theme)=>({
     [theme.breakpoints.down('sm')] : {
       maxWidth: '55vw',
     },
-    maxWidth: '25vw',
+    [theme.breakpoints.up('lg')] : {
+      maxWidth: '20vw',
+    },
+    maxWidth: '28vw',
     margin: '25px',
   },
 }));

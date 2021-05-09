@@ -1,5 +1,7 @@
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core';
+import {Link, useLocation} from "react-router-dom";
 
 const useStyles = makeStyles({
     btn: {
@@ -9,23 +11,49 @@ const useStyles = makeStyles({
         marginLeft: '4vw'
     },
     navbar: {
-        textAlign: 'right'
+        backgroundColor: "#282c34",
+        color: "white",
+        display: 'flex',
+        justifyContent: 'space-between',
+        height: "6vh",
+        alignItems: "center",
+        padding: "30px"
+    },
+    a:{
+        textDecoration: "none",
     }
 })
 
 function Nav() {
-    const classes = useStyles()
+    const classes = useStyles();
+    const location = useLocation();
     return (
         <div className={classes.navbar}> 
-            <Button variant="outlined" className={classes.btn}>
-                Home
-            </Button>
-            <Button className={classes.btn}>
-                Contacts
-            </Button>
-            <Button className={classes.btn}>
-                About
-            </Button>
+            <div>
+                <Typography
+                    variant="h5"
+                >
+                    LOREM
+                </Typography>
+            </div>
+            <div>
+                <Link to= "/" className={classes.a}>
+                    <Button variant={location.pathname == "/" ? "outlined": null} className={classes.btn}>
+                        Home
+                    </Button>
+                </Link>
+              
+              <Link to= "/signup" className={classes.a}>
+                <Button className={classes.btn} variant={location.pathname == "/signup" ? "outlined": null}>
+                        Sign Up
+                    </Button>
+              </Link>
+              <Link to= "/login" className={classes.a}>
+                <Button className={classes.btn} variant={location.pathname == "/login" ? "outlined": null}>
+                    login
+                </Button>
+            </Link>    
+            </div>
         </div>
     );
 }

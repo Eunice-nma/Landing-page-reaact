@@ -1,45 +1,65 @@
 import './App.css';
-import LandPageText from './components/Body';
-import Nav from './components/Nav';
 import { makeStyles } from '@material-ui/core';
-import CardComponent from './components/Card';
-import place1 from './place1.jpeg';
-import place2 from './place2.jpeg';
-import place3 from './place3.jpeg';
 import Footer from './components/Footer';
+import SignUp from './pages/SignUp';
+import LogIn from './pages/LogIn';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import HomePage from './pages/HomePage';
+import Nav from './components/Nav';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
 
 const useStyle = makeStyles({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    minHeight: "100vh",
+  },
+
   cardContainer: {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center"
   },
-  mainBody: {
-    backgroundColor:"#282c34",
-    color: "#fff",
-    padding: "3.5vw",
-    fontSize: "1rem",
-  }
-
 });
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#282c34",
+    },
+    secondary: {
+      main: "#33383F",
+    }
+  },
+})
 
-function App() {
+
+function App() { 
   const classes = useStyle()
 
   return (
-    <div className="root">
-     <div className={classes.mainBody}>
-        <Nav />
-        <LandPageText />
-        <div className= {classes.cardContainer}>
-            <CardComponent  place= {place1}/>
-            <CardComponent  place= {place2}/>
-            <CardComponent  place= {place3}/>
+
+
+    <Router>
+      <ThemeProvider theme = {theme}>
+        <div className= {classes.root}>
+          <Nav />
+          <Switch>
+            <Route path="/" exact component={HomePage} />
+            <Route path="/signup" component={SignUp} />
+            <Route path="/login" component={LogIn} />
+          </Switch>
+          <Footer />
         </div>
-     </div> 
-    <Footer />
-    </div>
+      </ThemeProvider>
+    </Router>
+    
   );
 }
 
